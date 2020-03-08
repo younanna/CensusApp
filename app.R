@@ -31,18 +31,18 @@ ui <- fluidPage(
 # Server logic ----
 
 server <- function(input, output) {
-  
-  output$selected_var <- renderText({  # notice the render function!
-    data <- switch(input$var, 
+  output$selected_var <- renderText({
+    data <- switch(input$var,
                    "Percent White" = counties$white,
                    "Percent Black" = counties$black,
                    "Percent Hispanic" = counties$hispanic,
-                   "Percent Asian" = counties$asian)
-    
-    percent_map(input$var = data, color = ?, legend.title = ?, max = ?, min = ?)
+                   "Percent Asian" = counties$asian
+                   )
+    percent_map(input$var = data)
+    #percent_map(input$var = data, color = ?, legend.title = ?, max = ?, min = ?)
   })
-  
 }
 
+
 # Run app ----
-shinyApp(ui, server)
+shinyApp(ui = ui, server = server)
