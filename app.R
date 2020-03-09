@@ -31,7 +31,7 @@ ui <- fluidPage(
 # Server logic ----
 
 server <- function(input, output) {
-  output$selected_var <- renderText({
+  output$map <- renderPlot({
     data <- switch(input$var,
                    "Percent White" = counties$white,
                    "Percent Black" = counties$black,
