@@ -38,8 +38,21 @@ server <- function(input, output) {
                    "Percent Hispanic" = counties$hispanic,
                    "Percent Asian" = counties$asian
                    )
-    percent_map(input$var = data)
-    #percent_map(input$var = data, color = ?, legend.title = ?, max = ?, min = ?)
+    
+    color <- switch(input$var,
+                    "Percent White" = "darkgreen",
+                    "Percent Black" = "black",
+                    "Percent Hispanic" = "darkorange",
+                    "Percent Asian" = "darkviolet")
+    
+    legend <- switch(input$var,
+                     "Percent White" = "% White",
+                       "Percent Black" = "% Black",
+                       "Percent Hispanic" = "% Hispanic",
+                     "Percent Asian" = "% Asian")
+    
+    #percent_map(input$var = data)
+    percent_map(input$var = data, color = color, legend.title = legend, max = input$range[1], min = input$range[2])
   })
 }
 
